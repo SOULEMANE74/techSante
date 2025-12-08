@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import List, Any
 from langchain_community.document_loaders import PyMuPDFLoader, CSVLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from sentence_transformers import SentenceTransformer
 from langchain_core.tools import tool
 from dotenv import load_dotenv
 load_dotenv()
@@ -27,6 +26,8 @@ def embedding_model():
     global _EMBEDDING_MODEL
     if _EMBEDDING_MODEL is None:
         print('[INFO] loading of embedding model ...')
+
+        from sentence_transformers import SentenceTransformer
         _EMBEDDING_MODEL=SentenceTransformer('all-MiniLM-L6-v2')
     return _EMBEDDING_MODEL
 
@@ -92,6 +93,8 @@ def splitter_documents(docs, chunk_size=1000, chunk_overlap = 200):
 def embed_chunks(chunks:List[Any])->np.ndarray:
     texts = [chunk.page_content for chunk in chunks]
     print(f'[INFO] Embedding for {len(texts)} chunks ...')
+
+    from sentence_transformers import SentenceTransformer
     embeddings = SentenceTransformer("all-MiniLM-L6-v2").encode(texts)
     print(f'[INFO] Embedding shape : {embeddings.shape}')
 
