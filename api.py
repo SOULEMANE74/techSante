@@ -21,13 +21,17 @@ app = FastAPI(
     version = '12.6.2025'
 )
 
-# Chargement de l'agent
-try : 
-    agent = triage_agent()
-    print('[INFO] Agent TechSante charger')
-except Exception as e:
-    print(f'[ERROR] Impossible de charger l\'agent : {e}')
-    agent = None
+agent_instance = None
+def get_agent():
+    global agent_instance
+    if agent_instance is None:
+        # Chargement de l'agent
+        try : 
+            agent_instance = triage_agent()
+            print('[INFO] Agent TechSante charger')
+        except Exception as e:
+            print(f'[ERROR] Impossible de charger l\'agent : {e}')
+    agent_instance = None
 
 # Routes de l'api
 @app.get('/')
@@ -38,8 +42,10 @@ def read_root():
 @app.post('/triage', response_model = ResponseAgent)
 def run_agent(request : RequestAgent):
     '''Endpoint principal pour interroger l'agent'''
-    if not agent:
-        raise HTTPException(status_code=503, detail='L\'agent n\'est pas initilise')
+    try : 
+        agent = get_agent()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"L'IA est en cours de réveil, réessayez dans 30s. Erreur: {e}")
     
     try: 
         result = agent.invoke({"messages": [{"role": "user", "content": request.query}]})

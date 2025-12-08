@@ -1,5 +1,8 @@
 import streamlit as st
 import requests
+import os 
+
+
 
 # Configuration de la page
 st.set_page_config(page_title="TechSanté Triage")
@@ -8,8 +11,8 @@ st.title("TechSanté Triage - Togo")
 st.markdown("---")
 st.info("Assistant de régulation médicale. En cas d'urgence absolue, appelez le 118.")
 
-# URL de ton API (Par défaut localhost si tu testes en local)
-API_URL = "http://127.0.0.1:8000/triage"
+# URL de l'API
+API_URL='https://techsante.onrender.com/triage'
 
 # Initialisation de l'historique de chat
 if "messages" not in st.session_state:
