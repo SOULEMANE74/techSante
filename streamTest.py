@@ -12,7 +12,7 @@ st.markdown("---")
 st.info("Assistant de régulation médicale. En cas d'urgence absolue, appelez le 118.")
 
 # URL de l'API
-API_URL='https://techsante.onrender.com/triage'
+API_URL='https://bilalbill-techsante-api.hf.space/triage'
 
 # Initialisation de l'historique de chat
 if "messages" not in st.session_state:

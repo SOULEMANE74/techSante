@@ -208,7 +208,7 @@ def consult_hospital_services(querry : str):
         # Formatage pour le LLM
         context = 'Information sur la capacite des hopitaux : \n'
         for res in results:
-            context += f'{res['content']}\n'
+            context += f"{res['content']}\n"
         return context
     except Exception as e:
         return f'Erreur  outil services: {e}'

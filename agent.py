@@ -85,22 +85,22 @@ def triage_agent():
     )
 
 
-    return agent
+    # return agent
 
-#     print("AGENT SERVICES URGENCES  EN LIGNE...")
+    print("AGENT SERVICES URGENCES  EN LIGNE...")
 
     
-#     while True:
-#         q = input("\nUrgence : ")
-#         if q.lower() == 'q': 
-#             break
+    while True:
+        q = input("\nUrgence : ")
+        if q.lower() == 'q': 
+            break
         
-#         try:
+        try:
 
-#             result = agent.invoke({"messages": [{"role": "user", "content": q}]})
-#             print(result['messages'][-1].content)
-#         except Exception as e:
-#             print(f"Erreur : {e}")
+            result = agent.invoke({"messages": [{"role": "user", "content": q}]})
+            print(result['messages'][-1].content)
+        except Exception as e:
+            print(f"Erreur : {e}")
 
-# if __name__ == '__main__':
-#     triage_agent()
+if __name__ == '__main__':
+    triage_agent()
