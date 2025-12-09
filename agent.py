@@ -71,10 +71,10 @@ def triage_agent():
                         - Si ORANGE/VERT : Propose la structure adaptée la plus proche avec des lits.
 
                         --- FORMAT DE RÉPONSE ---
-                        [NIVEAU GRAVITÉ]
-                        [ORIENTATION : Nom Structure (Niveau X)]
-                        [MOTIF : Pourquoi ce choix (ex: "Plateau technique adapté pour trauma")]
-                        [CONSEIL]
+                        NIVEAU GRAVITÉ 
+                        ORIENTATION : Nom Structure (Niveau X)
+                        MOTIF : Pourquoi ce choix (ex: "Plateau technique adapté pour trauma")]
+                        CONSEIL 
                     
                     """
     
