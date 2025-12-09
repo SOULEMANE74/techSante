@@ -13,7 +13,7 @@ api_key = os.environ.get('GROQ_API_KEY')
 def triage_agent():
     
     llm = ChatGroq(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         temperature=0.1,
         api_key=api_key
     )
@@ -85,22 +85,22 @@ def triage_agent():
     )
 
 
-    # return agent
+    return agent
 
-    print("AGENT SERVICES URGENCES  EN LIGNE...")
+#     print("AGENT SERVICES URGENCES  EN LIGNE...")
 
     
-    while True:
-        q = input("\nUrgence : ")
-        if q.lower() == 'q': 
-            break
+#     while True:
+#         q = input("\nUrgence : ")
+#         if q.lower() == 'q': 
+#             break
         
-        try:
+#         try:
 
-            result = agent.invoke({"messages": [{"role": "user", "content": q}]})
-            print(result['messages'][-1].content)
-        except Exception as e:
-            print(f"Erreur : {e}")
+#             result = agent.invoke({"messages": [{"role": "user", "content": q}]})
+#             print(result['messages'][-1].content)
+#         except Exception as e:
+#             print(f"Erreur : {e}")
 
-if __name__ == '__main__':
-    triage_agent()
+# if __name__ == '__main__':
+#     triage_agent()
